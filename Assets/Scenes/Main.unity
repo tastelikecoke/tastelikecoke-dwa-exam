@@ -218,6 +218,51 @@ Transform:
   m_Father: {fileID: 1269101607}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &128917208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128917210}
+  - component: {fileID: 128917209}
+  m_Layer: 0
+  m_Name: Enemy Projectile Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &128917209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128917208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e686b1488722a34b800f7dab0721772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1888873120123104574, guid: 8e0263b91fcbf6b408e9531ad8e5fd33, type: 3}
+  projectileLifetime: 5
+--- !u!4 &128917210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128917208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160860399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1140,7 @@ GameObject:
   - component: {fileID: 1119932677}
   - component: {fileID: 1119932676}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: EnemyMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,6 +1258,7 @@ GameObject:
   - component: {fileID: 1577791278}
   - component: {fileID: 1577791277}
   - component: {fileID: 1577791279}
+  - component: {fileID: 1577791280}
   m_Layer: 0
   m_Name: ShooterEnemy
   m_TagString: Untagged
@@ -1281,6 +1327,23 @@ MonoBehaviour:
   moveSpeed: 2.5
   approachRadius: 7
   targetPlayer: {fileID: 1003039687}
+--- !u!114 &1577791280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577791275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fce4573599c6844867fb3033dbce61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireCooldown: 0.8
+  bulletSpeed: 0.02
+  targetPlayer: {fileID: 1003039687}
+  projectilePool: {fileID: 128917209}
+  mesh: {fileID: 1119932673}
 --- !u!1 &1976879667
 GameObject:
   m_ObjectHideFlags: 0
