@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 1f;
-    public float fireCooldown = 1f;
-    public GameObject bulletPrefab = null;
+    [Header("Player Settings")]
+    public float moveSpeed = 5f;
+    public float fireCooldown = 0.1f;
+    public float bulletSpeed = 0.05f;
+    public float controllerDeadZone = 0.3f;
+
+    [Header("Required References")]
     public ProjectilePool projectilePool = null;
     public Camera mainCamera = null;
+    public GameObject playerMesh = null;
 
     private CharacterController characterController = null;
-    public GameObject playerMesh = null;
     private float timeUntilFire = 0.0f;
-
     private bool isMouse = false;
     private Vector3 lastInputDirection = Vector3.forward;
 
@@ -28,7 +31,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 inputDirection = lastInputDirection;
 
-        /* mouse */
         if(isMouse)
         {
             Ray inputRay = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             inputDirection = new Vector3(Input.GetAxis("CameraHorizontal"), 0, Input.GetAxis("CameraVertical"));
-            if(inputDirection == Vector3.zero || inputDirection.magnitude <= 0.3f)
+            if(inputDirection == Vector3.zero || inputDirection.magnitude <= controllerDeadZone)
                 inputDirection = lastInputDirection;
         }
         playerMesh.transform.rotation = Quaternion.LookRotation(inputDirection, Vector3.up);
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
         if(projectilePool != null && timeUntilFire <= 0.0f)
         {
             Projectile projectile = projectilePool.Spawn(this.transform.position, playerMesh.transform.rotation);
-            projectile.direction = inputDirection.normalized * 0.05f;
+            projectile.direction = inputDirection.normalized * bulletSpeed;
             timeUntilFire = fireCooldown;
         }
     }
