@@ -13,6 +13,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector3 inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        characterController?.Move(inputMovement * moveSpeed);
+        characterController?.SimpleMove(inputMovement * moveSpeed);
     }
 }
