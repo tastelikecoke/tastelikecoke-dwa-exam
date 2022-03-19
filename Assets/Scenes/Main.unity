@@ -555,9 +555,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  fireCooldown: 1
+  fireCooldown: 0.5
   bulletPrefab: {fileID: 756377658572837247, guid: 3e2e4a60e019bab478e3e24409936685, type: 3}
   mainCamera: {fileID: 485181063}
+  playerMesh: {fileID: 589557979}
 --- !u!143 &1003039688
 CharacterController:
   m_ObjectHideFlags: 0
