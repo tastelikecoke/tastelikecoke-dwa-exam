@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1f;
     public float fireCooldown = 1f;
     public GameObject bulletPrefab = null;
+    public Camera mainCamera = null;
 
     private CharacterController characterController = null;
     private float timeUntilFire = 0.0f;
@@ -26,5 +27,12 @@ public class PlayerController : MonoBehaviour
             timeUntilFire = fireCooldown;
         }
         if(timeUntilFire > 0.0f) timeUntilFire -= Time.deltaTime;
+
+        Ray inputRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if(Physics.Raycast(inputRay, out hit))
+        {
+            Debug.Log(hit.point);
+        }
     }
 }
