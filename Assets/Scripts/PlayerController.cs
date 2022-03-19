@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public GameObject playerMesh = null;
     private float timeUntilFire = 0.0f;
 
+    private bool isMouse = false;
+    private Vector3 lastInputDirection = Vector3.forward;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -22,22 +25,53 @@ public class PlayerController : MonoBehaviour
         Vector3 inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         characterController?.SimpleMove(inputMovement * moveSpeed);
 
-        Ray inputRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(inputRay, out hit))
-        {
-            Vector3 inputDirection = hit.point - transform.position;
-            inputDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
-            playerMesh.transform.rotation = Quaternion.LookRotation(inputDirection, Vector3.up);
+        Vector3 inputDirection = lastInputDirection;
 
-            if(Input.GetMouseButtonDown(0) && bulletPrefab != null && timeUntilFire <= 0.0f)
+        /* mouse */
+        if(isMouse)
+        {
+            Ray inputRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(inputRay, out hit))
             {
-                GameObject bulletInstance = Instantiate(bulletPrefab, this.transform.position, playerMesh.transform.rotation);
-                Projectile projectile = bulletInstance.GetComponent<Projectile>();
-                projectile.direction = inputDirection.normalized * 0.05f;
-                timeUntilFire = fireCooldown;
+                inputDirection = hit.point - transform.position;
+                inputDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
             }
+            Debug.Log(Input.GetAxis("CameraVertical").ToString() + " " + Input.GetAxis("CameraHorizontal").ToString());
+        }
+        else
+        {
+            inputDirection = new Vector3(Input.GetAxis("CameraHorizontal"), 0, Input.GetAxis("CameraVertical"));
+            if(inputDirection == Vector3.zero)
+                inputDirection = lastInputDirection;
+        }
+        playerMesh.transform.rotation = Quaternion.LookRotation(inputDirection, Vector3.up);
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("happens");
+            isMouse = true;
+            FireBullet(inputDirection);
+        }
+        if(Input.GetButtonDown("Fire1 Controller"))
+        {
+            Debug.Log("happens too?");
+            isMouse = false;
+            FireBullet(inputDirection);
         }
         if(timeUntilFire > 0.0f) timeUntilFire -= Time.deltaTime;
+
+        lastInputDirection = inputDirection;
+    }
+
+    private void FireBullet(Vector3 inputDirection)
+    {
+        if(bulletPrefab != null && timeUntilFire <= 0.0f)
+        {
+            GameObject bulletInstance = Instantiate(bulletPrefab, this.transform.position, playerMesh.transform.rotation);
+            Projectile projectile = bulletInstance.GetComponent<Projectile>();
+            projectile.direction = inputDirection.normalized * 0.05f;
+            timeUntilFire = fireCooldown;
+        }
     }
 }
