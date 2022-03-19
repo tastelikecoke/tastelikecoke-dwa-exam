@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
                 inputDirection = hit.point - transform.position;
                 inputDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
             }
-            Debug.Log(Input.GetAxis("CameraVertical").ToString() + " " + Input.GetAxis("CameraHorizontal").ToString());
         }
         else
         {
@@ -50,13 +49,11 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButton("Fire1"))
         {
-            Debug.Log("happens");
             isMouse = true;
             FireBullet(inputDirection);
         }
         if(Input.GetButton("Fire1 Controller"))
         {
-            Debug.Log("happens too?");
             isMouse = false;
             FireBullet(inputDirection);
         }
