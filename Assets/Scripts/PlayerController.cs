@@ -43,18 +43,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             inputDirection = new Vector3(Input.GetAxis("CameraHorizontal"), 0, Input.GetAxis("CameraVertical"));
-            if(inputDirection == Vector3.zero)
+            if(inputDirection == Vector3.zero || inputDirection.magnitude <= 0.3f)
                 inputDirection = lastInputDirection;
         }
         playerMesh.transform.rotation = Quaternion.LookRotation(inputDirection, Vector3.up);
 
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButton("Fire1"))
         {
             Debug.Log("happens");
             isMouse = true;
             FireBullet(inputDirection);
         }
-        if(Input.GetButtonDown("Fire1 Controller"))
+        if(Input.GetButton("Fire1 Controller"))
         {
             Debug.Log("happens too?");
             isMouse = false;
