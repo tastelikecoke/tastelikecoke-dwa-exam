@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1f;
     public float fireCooldown = 1f;
     public GameObject bulletPrefab = null;
+    public ProjectilePool projectilePool = null;
     public Camera mainCamera = null;
 
     private CharacterController characterController = null;
@@ -66,10 +67,9 @@ public class PlayerController : MonoBehaviour
 
     private void FireBullet(Vector3 inputDirection)
     {
-        if(bulletPrefab != null && timeUntilFire <= 0.0f)
+        if(projectilePool != null && timeUntilFire <= 0.0f)
         {
-            GameObject bulletInstance = Instantiate(bulletPrefab, this.transform.position, playerMesh.transform.rotation);
-            Projectile projectile = bulletInstance.GetComponent<Projectile>();
+            Projectile projectile = projectilePool.Spawn(this.transform.position, playerMesh.transform.rotation);
             projectile.direction = inputDirection.normalized * 0.05f;
             timeUntilFire = fireCooldown;
         }
