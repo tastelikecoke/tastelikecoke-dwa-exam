@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 996896999627022541}
   - component: {fileID: 996896999627022542}
   - component: {fileID: 996896999627022540}
+  - component: {fileID: 8269872116635998987}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -81,6 +82,23 @@ MonoBehaviour:
   moveSpeed: 2.5
   approachRadius: 0
   targetPlayer: {fileID: 0}
+--- !u!114 &8269872116635998987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996896999627022536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ef6434e845f314f852a4d013cb1eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeCooldown: 0.8
+  meleeDistance: 1.5
+  targetPlayer: {fileID: 0}
+  projectilePool: {fileID: 0}
+  meleeAnimator: {fileID: 4347061913930900158}
 --- !u!1 &3051406237326300544
 GameObject:
   m_ObjectHideFlags: 0

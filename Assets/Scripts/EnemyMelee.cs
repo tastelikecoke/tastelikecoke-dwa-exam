@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class EnemyMelee : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float meleeCooldown = 0.4f;
+    public float meleeDistance = 2f;
 
-    // Update is called once per frame
-    void Update()
+    [Header("Required References")]
+    public PlayerController targetPlayer = null;
+    public ProjectilePool projectilePool = null;
+    public Animator meleeAnimator = null;
+
+    private float timeUntilMelee = 0.0f;
+
+    private void Update()
     {
+        Vector3 playerDirection = targetPlayer.transform.position -  transform.position;
         
+        if(playerDirection.magnitude <= meleeDistance && timeUntilMelee <= 0.0f)
+        {
+            meleeAnimator.SetTrigger("Activate");
+            timeUntilMelee = meleeCooldown;
+        }
+        if(timeUntilMelee > 0.0f) timeUntilMelee -= Time.deltaTime;
     }
 }
