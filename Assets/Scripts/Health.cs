@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
         if(timeUntilDamage > 0.0f) timeUntilDamage -= Time.deltaTime;
     }
 
-    private bool Damage(float damageValue)
+    public bool Damage(float damageValue)
     {
         if(timeUntilDamage <= 0.0f)
         {

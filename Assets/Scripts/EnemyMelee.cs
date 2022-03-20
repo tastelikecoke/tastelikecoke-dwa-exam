@@ -22,6 +22,9 @@ public class EnemyMelee : MonoBehaviour
         {
             meleeAnimator.SetTrigger("Activate");
             timeUntilMelee = meleeCooldown;
+
+            Health playerHealth = targetPlayer.GetComponent<Health>();
+            playerHealth?.Damage(1.0f);
         }
         if(timeUntilMelee > 0.0f) timeUntilMelee -= Time.deltaTime;
     }

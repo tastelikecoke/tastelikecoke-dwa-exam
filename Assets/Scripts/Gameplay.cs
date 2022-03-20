@@ -40,7 +40,7 @@ public class Gameplay : MonoBehaviour
     private void EnemyDied(Health enemyHealth)
     {
         AddKills();
-        enemyHealth.gameObject.SetActive(false);
+        /* enemyHealth.gameObject.SetActive(false); */
         enemiesHealth.Remove(enemyHealth);
     }
 
