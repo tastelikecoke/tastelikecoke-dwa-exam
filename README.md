@@ -34,6 +34,7 @@
 ### Enemy from Prefab
 - Duplicate one of the prefabs in `Assets/Prefabs/Enemy Prefabs`.
 
+### After Creating the Enemy Prefab
 - Using the Enemy Config Loader's Config File name property, set the config it uses at runtime.
 
     - Optionally create an EnemyConfig in `Resources/Config` for it to specifically use.
