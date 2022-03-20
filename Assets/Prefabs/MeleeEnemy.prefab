@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 996896999627022540}
   - component: {fileID: 8269872116635998987}
   - component: {fileID: 4956075517279538061}
+  - component: {fileID: 3755098284724444697}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -98,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeCooldown: 0.8
   meleeDistance: 1.5
+  attackPermittedMaximumHeight: 0.6
   targetPlayer: {fileID: 0}
-  projectilePool: {fileID: 0}
   meleeAnimator: {fileID: 4347061913930900158}
 --- !u!114 &4956075517279538061
 MonoBehaviour:
@@ -118,7 +119,19 @@ MonoBehaviour:
   attackFlag: Enemy
   damageAnimator: {fileID: 7844356718333206081}
   deathAnimator: {fileID: 8853581579462300368}
-  health: 1
+--- !u!114 &3755098284724444697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996896999627022536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f51555d503c944782cc07789de94d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configFileName: Config/MeleeEnemyConfig
 --- !u!1 &3051406237326300544
 GameObject:
   m_ObjectHideFlags: 0

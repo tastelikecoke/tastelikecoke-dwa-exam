@@ -23,7 +23,6 @@ public class PlayerConfigLoader : MonoBehaviour
     private void Update()
     {
         PlayerConfig playerConfig = Resources.Load<PlayerConfig>(PlayerConfig.fileName);
-        Debug.Log(playerConfig);
         if(playerConfig != null)
         {
             if(playerHealth != null)

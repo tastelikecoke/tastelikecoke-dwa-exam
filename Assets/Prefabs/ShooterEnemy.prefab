@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 3784889701678049162}
   - component: {fileID: 3784889701678049173}
   - component: {fileID: 3495603809557407061}
+  - component: {fileID: 2918068100879993092}
   m_Layer: 0
   m_Name: ShooterEnemy
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireCooldown: 0.8
   bulletSpeed: 8
+  attackPermittedMaximumHeight: 0.6
   targetPlayer: {fileID: 0}
   projectilePool: {fileID: 0}
   mesh: {fileID: 3784889702008887716}
@@ -163,12 +165,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae1f4aa406a3e44697d06d6e2ec6636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
   damageCooldown: 0.5
   attackFlag: Enemy
   damageAnimator: {fileID: 6625933775003527574}
   deathAnimator: {fileID: 2126105676400050438}
-  health: 1
+--- !u!114 &2918068100879993092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784889701678049166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f51555d503c944782cc07789de94d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configFileName: Config/ShooterEnemyConfig
 --- !u!1 &3784889702008887716
 GameObject:
   m_ObjectHideFlags: 0
