@@ -1845,10 +1845,12 @@ MonoBehaviour:
   enemyPrefabTypes:
   - {fileID: 3495603809557407061, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
   waveCooldown: 10
-  mapEdge: 20
+  minimumEnemyAmount: 3
+  mapEdge: 19
   mapCeiling: 10
   defaultPlayerController: {fileID: 1003039687}
   defaultEnemyProjectilePool: {fileID: 128917209}
+  timeUntilWave: 0
 --- !u!1 &1976879667
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,8 @@ public class Health : MonoBehaviour
     {
         timeUntilDamage = damageCooldown;
         health = maxHealth;
+        if(deathAnimator != null)
+            deathAnimator.SetBool("Activated", false);
     }
 
     private void Awake()
@@ -40,6 +42,11 @@ public class Health : MonoBehaviour
         if(timeUntilDamage > 0.0f) timeUntilDamage -= Time.deltaTime;
     }
 
+    public void Kill()
+    {
+        Damage(health);
+    }
+
     public bool Damage(float damageValue)
     {
         if(timeUntilDamage <= 0.0f)
@@ -50,7 +57,7 @@ public class Health : MonoBehaviour
             {
                 if(onDeath != null)
                     onDeath.Invoke(this);
-                deathAnimator.SetTrigger("Activate");
+                deathAnimator.SetBool("Activated", true);
                 this.enabled = false;
             }
             else if(damageAnimator != null)

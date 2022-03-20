@@ -5,14 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public List<Health> enemyPrefabTypes;
-    public float waveCooldown = 10f;
-    public float mapEdge = 20f;
+    public float waveCooldown = 1f;
+    public int minimumEnemyAmount = 3;
+    public float mapEdge = 19f;
     public float mapCeiling = 10f;
     public PlayerController defaultPlayerController = null;
     public ProjectilePool defaultEnemyProjectilePool = null;
 
     private List<Health> pool;
-    private float timeUntilWave = 0f;
+    public float timeUntilWave = 0f;
     private int waveNumber = 0;
 
     public delegate void OnSpawn(Health newEnemy);
@@ -43,19 +44,40 @@ public class EnemySpawner : MonoBehaviour
         pool = new List<Health>();
     }
 
-    private void Start()
+    private void LateUpdate()
     {
-        
-        SpawnWave();
+        if(timeUntilWave <= 0.0f)
+        {
+            SpawnWave();
+            timeUntilWave = waveCooldown;
+        }
+        if(timeUntilWave > 0.0f) timeUntilWave -= Time.deltaTime;
     }
 
     public void SpawnWave()
     {
-        for(int i = 0; i < 19; i++)
+        for(int i = 0; i < minimumEnemyAmount + waveNumber; i++)
         {
             Vector3 spawnPosition = RandomlyGenerateSpawnPoint();
-            Health newEnemyHealth = Instantiate(enemyPrefabTypes[0]);
-            newEnemyHealth.transform.position = spawnPosition;
+            Debug.Log(spawnPosition);
+
+            Health newEnemyHealth = null;
+            for(int poolIdx = 0; poolIdx < pool.Count; poolIdx++)
+            {
+                if(pool[poolIdx].IsDead() && pool[poolIdx].name.StartsWith(enemyPrefabTypes[0].name))
+                {
+                    newEnemyHealth = pool[poolIdx];
+                    break;
+                }
+            }
+            if(newEnemyHealth == null)
+            {
+                newEnemyHealth = Instantiate(enemyPrefabTypes[0]);
+                newEnemyHealth.transform.SetParent(this.transform);
+                pool.Add(newEnemyHealth);
+            }
+            newEnemyHealth.enabled = true;
+
             EnemyController enemyController = newEnemyHealth.GetComponent<EnemyController>();
             if(enemyController != null)
             {
@@ -74,6 +96,14 @@ public class EnemySpawner : MonoBehaviour
             }
             if(onSpawn != null)
                 onSpawn(newEnemyHealth);
+            newEnemyHealth.Reset();
+            CharacterController characterController = newEnemyHealth.GetComponent<CharacterController>();
+            if(characterController != null)
+            {
+                characterController.enabled = false;
+            }
+            newEnemyHealth.transform.position = spawnPosition;
         }
+        waveNumber += 1;
     }
 }

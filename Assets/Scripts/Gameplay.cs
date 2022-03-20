@@ -31,7 +31,6 @@ public class Gameplay : MonoBehaviour
 
     private void OnSpawn(Health newEnemy)
     {
-        Debug.Log("enemy added");
         enemiesHealth.Add(newEnemy);
         newEnemy.onDeath += EnemyDied;
     }
@@ -51,6 +50,7 @@ public class Gameplay : MonoBehaviour
     {
         AddKills();
         /* enemyHealth.gameObject.SetActive(false); */
+        
         enemyHealth.onDeath -= EnemyDied;
         enemiesHealth.Remove(enemyHealth);
     }
