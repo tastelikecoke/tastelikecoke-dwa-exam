@@ -9,11 +9,16 @@ public class MainDisplay : MonoBehaviour
     public GameObject respawnPanel;
     public Text killsText;
     public Text highscoreKillsText;
+    public Image hpImage;
 
     public void UpdateKills(int currentKills, int highscoreKills)
     {
         killsText.text = string.Format("kills: {0}", currentKills);
         highscoreKillsText.text = string.Format("highscore: {0}", highscoreKills);
+    }
+    public void UpdateHealth(float hpRatio)
+    {
+        hpImage.fillAmount = hpRatio;
     }
 
     public void ShowRespawn(float respawnTime)

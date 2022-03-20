@@ -58,6 +58,7 @@ public class Gameplay : MonoBehaviour
 
     private void Update()
     {
+        mainDisplay?.UpdateHealth(playerHealth.health / playerHealth.maxHealth);
         if(playerHealth.IsDead())
         {
             if(timeUntilPlayerRespawn > 0f)

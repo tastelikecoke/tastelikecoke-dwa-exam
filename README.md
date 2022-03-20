@@ -2,5 +2,5 @@
 For Exam
 
 Missing Features TODO
-- no player HP UI
+- no config file
 - waves cause a frameskip
