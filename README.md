@@ -11,17 +11,19 @@
 - Start by creating a new prefab in Assets/Prefabs/EnemyPrefabs.
 
 ## Enemy from Scratch
-1. Start from an empty object. The enemy needs these components:
+1. Start from an empty object prefab. The enemy needs these components:
   - Collider (any)
   - Character Controller
   - Enemy Controller
   - Health
   - Enemy Config Leader
-2. Add optional attack components. These are the optional components:
+2. Optionally add a mesh for the enemy so it is visible.
+
+3. Add optional attack components. These are the optional components:
   - Enemy Attack (ranged attack)
   - Enemy Melee
 
-3. Using the Enemy Config Loader's Config File name property, set the config it uses at runtime.
+4. Using the Enemy Config Loader's Config File name property, set the config it uses at runtime.
 
-4. Set the Enemy to spawn by putting the Enemy prefab reference to Enemies > Enemy Spawner > Enemy Prefab Types
+5. Set the Enemy to spawn by putting the Enemy prefab reference to Enemies > Enemy Spawner > Enemy Prefab Types
   - Alternatively, just drop the prefab to the game scene.  The enemy's tracking will not work, but it won't cause errors.
