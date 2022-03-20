@@ -1844,6 +1844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabTypes:
   - {fileID: 3495603809557407061, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
+  - {fileID: 4956075517279538061, guid: 2e7913b7b1a49f6438fe9fefaa223878, type: 3}
   waveCooldown: 10
   minimumEnemyAmount: 3
   mapEdge: 19

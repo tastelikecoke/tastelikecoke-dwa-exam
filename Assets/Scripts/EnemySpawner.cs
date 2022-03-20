@@ -42,13 +42,13 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         pool = new List<Health>();
-        timeUntilWave = waveCooldown;
+        timeUntilWave = 0f;
     }
 
     public void Reset()
     {
         waveNumber = 0;
-        timeUntilWave = waveCooldown;
+        timeUntilWave = 0f;
     }
 
     private void Update()
@@ -65,13 +65,14 @@ public class EnemySpawner : MonoBehaviour
     {
         for(int i = 0; i < minimumEnemyAmount + waveNumber; i++)
         {
+            int enemyIdx = Random.Range(0, enemyPrefabTypes.Count);
             Vector3 spawnPosition = RandomlyGenerateSpawnPoint();
             Debug.Log(spawnPosition);
 
             Health newEnemyHealth = null;
             for(int poolIdx = 0; poolIdx < pool.Count; poolIdx++)
             {
-                if(pool[poolIdx].IsDead() && pool[poolIdx].name.StartsWith(enemyPrefabTypes[0].name))
+                if(pool[poolIdx].IsDead() && pool[poolIdx].name.StartsWith(enemyPrefabTypes[enemyIdx].name))
                 {
                     newEnemyHealth = pool[poolIdx];
                     break;
@@ -79,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             }
             if(newEnemyHealth == null)
             {
-                newEnemyHealth = Instantiate(enemyPrefabTypes[0]);
+                newEnemyHealth = Instantiate(enemyPrefabTypes[enemyIdx]);
                 newEnemyHealth.transform.SetParent(this.transform);
                 pool.Add(newEnemyHealth);
             }

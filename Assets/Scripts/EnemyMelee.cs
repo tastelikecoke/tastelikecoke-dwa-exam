@@ -14,9 +14,19 @@ public class EnemyMelee : MonoBehaviour
     public Animator meleeAnimator = null;
 
     private float timeUntilMelee = 0.0f;
+    private Health health = null;
+
+    private void Awake()
+    {
+        health = GetComponent<Health>();
+    }
 
     private void Update()
     {
+        if(health.IsDead())
+        {
+            return;
+        }
         if(attackPermittedMaximumHeight < transform.position.y)
         {
             return;
