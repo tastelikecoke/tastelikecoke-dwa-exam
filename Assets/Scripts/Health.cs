@@ -14,9 +14,20 @@ public class Health : MonoBehaviour
     public float health;
     private float timeUntilDamage = 0.0f;
 
-    private void Reset()
+    public bool IsDead()
     {
+        return health <= 0.0f;
+    }
+
+    public void Reset()
+    {
+        timeUntilDamage = damageCooldown;
         health = maxHealth;
+    }
+
+    private void Awake()
+    {
+        Reset();
     }
 
     private void Update()

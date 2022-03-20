@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerMesh = null;
 
     private CharacterController characterController = null;
+    private Health health = null;
     private float timeUntilFire = 0.0f;
     private bool isMouse = false;
     private Vector3 lastInputDirection = Vector3.forward;
@@ -23,9 +24,20 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        health = GetComponent<Health>();
     }
+
     private void Update()
     {
+        if(health.IsDead())
+        {
+            characterController.enabled = false;
+            return;
+        }
+        else
+        {
+            characterController.enabled = true;
+        }
         Vector3 inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         characterController?.SimpleMove(inputMovement.normalized * moveSpeed);
 
