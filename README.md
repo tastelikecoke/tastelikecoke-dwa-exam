@@ -10,6 +10,7 @@
 ## Controls
 - Mouse and Keyboard (WASD, Mouse curose, Left Mouse Button) implemented
 - Controller/gamepad (Left stick, Right stick, Right shoulder button, Right trigger) implemented
+- Escape or Backspace to exit game on build.
 
 ## How To Create a New Enemy
 - Start by creating a new prefab in `Assets/Prefabs/Enemy Prefabs`.
@@ -40,3 +41,7 @@
 - Set the Enemy to spawn by putting the Enemy prefab reference to Enemies > Enemy Spawner > Enemy Prefab Types
 
     - Alternatively, just drop the prefab to the game scene.  The enemy's tracking will not work, but it won't cause errors.
+
+## Configurations
+- PlayerConfig for any settings related to the player and gameplay.
+- ShooterEnemyConfig and MeleeEnemyConfig for shooter and melee enemies respectively.
