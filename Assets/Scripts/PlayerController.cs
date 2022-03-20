@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Settings")]
     public float moveSpeed = 5f;
     public float fireCooldown = 0.1f;
-    public float bulletSpeed = 0.05f;
+    public float bulletSpeed = 10f;
     public float controllerDeadZone = 0.3f;
 
     [Header("Required References")]

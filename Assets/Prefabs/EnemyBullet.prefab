@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
   projectilePool: {fileID: 0}
+  attackFlag: Enemy
 --- !u!135 &7401800229706468631
 SphereCollider:
   m_ObjectHideFlags: 0

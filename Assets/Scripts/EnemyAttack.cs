@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float fireCooldown = 0.1f;
-    public float bulletSpeed = 0.05f;
+    public float bulletSpeed = 10f;
 
     [Header("Required References")]
     public PlayerController targetPlayer = null;

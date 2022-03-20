@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public Vector3 direction = Vector3.zero;
     public ProjectilePool projectilePool = null;
+    public string attackFlag = "";
 
     private float lifetime = 0f;
 
@@ -18,7 +19,7 @@ public class Projectile : MonoBehaviour
     }
     private void Update()
     {
-        this.transform.position += direction;
+        this.transform.position += direction * Time.deltaTime;
         if(lifetime < 0f)
         {
             this.gameObject.SetActive(false);
