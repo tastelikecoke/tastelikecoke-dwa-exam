@@ -50,7 +50,7 @@ public class Gameplay : MonoBehaviour
     {
         AddKills();
         /* enemyHealth.gameObject.SetActive(false); */
-        
+
         enemyHealth.onDeath -= EnemyDied;
         enemiesHealth.Remove(enemyHealth);
     }
@@ -75,6 +75,15 @@ public class Gameplay : MonoBehaviour
                 {
                     playerHealth.gameObject.transform.position = playerSpawnPoint.transform.position;
                 }
+
+                spawner?.Reset();
+                for(int i = enemiesHealth.Count - 1; i >= 0; i--)
+                {
+                    enemiesHealth[i].Kill();
+                    enemiesHealth[i].onDeath -= EnemyDied;
+                    enemiesHealth.Remove(enemiesHealth[i]);
+                }
+                
             }
         }
 

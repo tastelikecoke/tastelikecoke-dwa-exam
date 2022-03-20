@@ -44,7 +44,12 @@ public class Health : MonoBehaviour
 
     public void Kill()
     {
-        Damage(health);
+        health = 0f;
+        if(deathAnimator != null)
+        {
+            deathAnimator.SetBool("Activated", true);
+            this.enabled = false;
+        }
     }
 
     public bool Damage(float damageValue)

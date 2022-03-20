@@ -42,6 +42,13 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         pool = new List<Health>();
+        timeUntilWave = waveCooldown;
+    }
+
+    public void Reset()
+    {
+        waveNumber = 0;
+        timeUntilWave = waveCooldown;
     }
 
     private void LateUpdate()
