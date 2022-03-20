@@ -167,6 +167,7 @@ MonoBehaviour:
   damageCooldown: 0.5
   attackFlag: Enemy
   damageAnimator: {fileID: 6625933775003527574}
+  deathAnimator: {fileID: 2126105676400050438}
   health: 1
 --- !u!1 &3784889702008887716
 GameObject:
@@ -179,6 +180,7 @@ GameObject:
   - component: {fileID: 3784889702008887719}
   - component: {fileID: 3784889702008887712}
   - component: {fileID: 3784889702008887713}
+  - component: {fileID: 2126105676400050438}
   m_Layer: 0
   m_Name: EnemyMesh
   m_TagString: Untagged
@@ -249,6 +251,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2126105676400050438
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784889702008887716}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 537bec70e8ed656469dc6464710d151e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6527538132465143831
 GameObject:
   m_ObjectHideFlags: 0

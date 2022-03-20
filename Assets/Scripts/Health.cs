@@ -9,10 +9,14 @@ public class Health : MonoBehaviour
     public float damageCooldown = 0.5f;
     public string attackFlag = "";
     public Animator damageAnimator = null;
+    public Animator deathAnimator = null;
 
     [Header("Live Properties")]
     public float health;
     private float timeUntilDamage = 0.0f;
+
+    public delegate void OnDeath(Health self);
+    public OnDeath onDeath;
 
     public bool IsDead()
     {
@@ -42,7 +46,12 @@ public class Health : MonoBehaviour
         {
             health -= damageValue;
             timeUntilDamage = damageCooldown;
-            if(damageAnimator != null)
+            if(IsDead() && deathAnimator != null)
+            {
+                onDeath.Invoke(this);
+                deathAnimator.SetTrigger("Activate");
+            }
+            else if(damageAnimator != null)
             {
                 damageAnimator.SetTrigger("Activate");
             }

@@ -13,9 +13,20 @@ public class EnemyAttack : MonoBehaviour
     public GameObject mesh = null;
 
     private float timeUntilFire = 0.0f;
+    private Health health = null;
+
+    private void Awake()
+    {
+        health = GetComponent<Health>();
+    }
 
     private void Update()
     {
+        if(health.IsDead())
+        {
+            return;
+        }
+        
         Vector3 playerDirection = targetPlayer.transform.position -  transform.position;
         
         FireBullet(playerDirection);

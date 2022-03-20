@@ -167,10 +167,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1003039691}
-  enemiesHealth: []
+  enemiesHealth:
+  - {fileID: 1430425873}
+  - {fileID: 1778249249}
+  - {fileID: 374380375}
   mainDisplay: {fileID: 441030564}
   playerRespawnTime: 3
   playerSpawnPoint: {fileID: 2109022136}
+  currentKills: 0
 --- !u!1 &43001174
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &92869133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -853,6 +857,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3784889701678049161, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
   m_PrefabInstance: {fileID: 1821169217}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &374380375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3495603809557407061, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
+  m_PrefabInstance: {fileID: 1821169217}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae1f4aa406a3e44697d06d6e2ec6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441030559
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +985,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnText: {fileID: 894153586}
   respawnPanel: {fileID: 92869132}
+  killsText: {fileID: 147667613}
+  highscoreKillsText: {fileID: 1566130468}
 --- !u!1 &485181061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1402,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4956075517279538061, guid: 2e7913b7b1a49f6438fe9fefaa223878, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8269872116635998987, guid: 2e7913b7b1a49f6438fe9fefaa223878, type: 3}
       propertyPath: targetPlayer
       value: 
@@ -1585,6 +1606,7 @@ MonoBehaviour:
   damageCooldown: 1
   attackFlag: Player
   damageAnimator: {fileID: 43001176}
+  deathAnimator: {fileID: 0}
   health: 1
 --- !u!1001 &1006235589
 PrefabInstance:
@@ -1593,6 +1615,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659041828}
     m_Modifications:
+    - target: {fileID: 3495603809557407061, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3784889701678049161, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1875,6 +1901,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 996896999627022543, guid: 2e7913b7b1a49f6438fe9fefaa223878, type: 3}
   m_PrefabInstance: {fileID: 859554512}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1430425873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4956075517279538061, guid: 2e7913b7b1a49f6438fe9fefaa223878, type: 3}
+  m_PrefabInstance: {fileID: 859554512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae1f4aa406a3e44697d06d6e2ec6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1566130466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,6 +2029,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3784889701678049161, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
   m_PrefabInstance: {fileID: 1006235589}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1778249249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3495603809557407061, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
+  m_PrefabInstance: {fileID: 1006235589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae1f4aa406a3e44697d06d6e2ec6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1821169217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1999,6 +2047,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659041828}
     m_Modifications:
+    - target: {fileID: 3495603809557407061, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3784889701678049161, guid: 7e92208cbc3cf5b4eb409bc2eb3f5e37, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -7,6 +7,14 @@ public class MainDisplay : MonoBehaviour
 {
     public Text respawnText;
     public GameObject respawnPanel;
+    public Text killsText;
+    public Text highscoreKillsText;
+
+    public void UpdateKills(int currentKills, int highscoreKills)
+    {
+        killsText.text = string.Format("kills: {0}", currentKills);
+        highscoreKillsText.text = string.Format("highscore: {0}", highscoreKills);
+    }
 
     public void ShowRespawn(float respawnTime)
     {
