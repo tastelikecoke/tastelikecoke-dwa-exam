@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
         timeUntilWave = waveCooldown;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if(timeUntilWave <= 0.0f)
         {
@@ -103,7 +103,11 @@ public class EnemySpawner : MonoBehaviour
             }
             if(onSpawn != null)
                 onSpawn(newEnemyHealth);
+
             newEnemyHealth.Reset();
+            /* Character Controller disrupts transform position changes, so it is disabled at start.
+             * it is reenabled by EnemyController.
+             */
             CharacterController characterController = newEnemyHealth.GetComponent<CharacterController>();
             if(characterController != null)
             {

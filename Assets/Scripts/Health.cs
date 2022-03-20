@@ -29,6 +29,13 @@ public class Health : MonoBehaviour
         health = maxHealth;
         if(deathAnimator != null)
             deathAnimator.SetBool("Activated", false);
+
+        Collider collider = this.GetComponent<Collider>();
+        if(collider != null)
+        {
+            collider.enabled = true;
+        }
+
     }
 
     private void Awake()
@@ -49,6 +56,11 @@ public class Health : MonoBehaviour
         {
             deathAnimator.SetBool("Activated", true);
             this.enabled = false;
+            Collider collider = this.GetComponent<Collider>();
+            if(collider != null)
+            {
+                collider.enabled = false;
+            }
         }
     }
 
@@ -58,12 +70,18 @@ public class Health : MonoBehaviour
         {
             health -= damageValue;
             timeUntilDamage = damageCooldown;
-            if(IsDead() && deathAnimator != null)
+            if(IsDead())
             {
                 if(onDeath != null)
                     onDeath.Invoke(this);
-                deathAnimator.SetBool("Activated", true);
+                if(deathAnimator != null)
+                    deathAnimator.SetBool("Activated", true);
                 this.enabled = false;
+                Collider collider = this.GetComponent<Collider>();
+                if(collider != null)
+                {
+                    collider.enabled = false;
+                }
             }
             else if(damageAnimator != null)
             {

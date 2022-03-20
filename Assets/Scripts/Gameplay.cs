@@ -66,26 +66,30 @@ public class Gameplay : MonoBehaviour
             }
             else
             {
-                mainDisplay?.HideRespawn();
-                timeUntilPlayerRespawn = playerRespawnTime;
-                playerHealth.Reset();
-                currentKills = 0;
-                mainDisplay?.UpdateKills(currentKills, highscoreKills);
-                if(playerSpawnPoint != null)
-                {
-                    playerHealth.gameObject.transform.position = playerSpawnPoint.transform.position;
-                }
-
-                spawner?.Reset();
-                for(int i = enemiesHealth.Count - 1; i >= 0; i--)
-                {
-                    enemiesHealth[i].Kill();
-                    enemiesHealth[i].onDeath -= EnemyDied;
-                    enemiesHealth.Remove(enemiesHealth[i]);
-                }
-                
+                RespawnPlayer();
             }
         }
+    }
 
+    private void RespawnPlayer()
+    {
+        mainDisplay?.HideRespawn();
+        timeUntilPlayerRespawn = playerRespawnTime;
+        playerHealth.Reset();
+        currentKills = 0;
+        mainDisplay?.UpdateKills(currentKills, highscoreKills);
+        if(playerSpawnPoint != null)
+        {
+            playerHealth.gameObject.transform.position = playerSpawnPoint.transform.position;
+        }
+        playerHealth.enabled = true;
+
+        spawner?.Reset();
+        for(int i = enemiesHealth.Count - 1; i >= 0; i--)
+        {
+            enemiesHealth[i].Kill();
+            enemiesHealth[i].onDeath -= EnemyDied;
+            enemiesHealth.Remove(enemiesHealth[i]);
+        }
     }
 }
