@@ -32,15 +32,18 @@ public class EnemyMelee : MonoBehaviour
         {
             return;
         }
-        Vector3 playerDirection = targetPlayer.transform.position -  transform.position;
-        
-        if(playerDirection.magnitude <= meleeDistance && timeUntilMelee <= 0.0f)
+        if(targetPlayer != null)
         {
-            meleeAnimator.SetTrigger("Activate");
-            timeUntilMelee = meleeCooldown;
+            Vector3 playerDirection = targetPlayer.transform.position -  transform.position;
+            
+            if(playerDirection.magnitude <= meleeDistance && timeUntilMelee <= 0.0f)
+            {
+                meleeAnimator.SetTrigger("Activate");
+                timeUntilMelee = meleeCooldown;
 
-            Health playerHealth = targetPlayer.GetComponent<Health>();
-            playerHealth?.Damage(1.0f);
+                Health playerHealth = targetPlayer.GetComponent<Health>();
+                playerHealth?.Damage(1.0f);
+            }
         }
         if(timeUntilMelee > 0.0f) timeUntilMelee -= Time.deltaTime;
     }

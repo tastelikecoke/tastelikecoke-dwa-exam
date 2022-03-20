@@ -34,9 +34,11 @@ public class EnemyAttack : MonoBehaviour
             return;
         }
         
-        Vector3 playerDirection = targetPlayer.transform.position -  transform.position;
-        
-        FireBullet(playerDirection);
+        if(targetPlayer != null)
+        {
+            Vector3 playerDirection = targetPlayer.transform.position -  transform.position;
+            FireBullet(playerDirection);
+        }
         if(timeUntilFire > 0.0f) timeUntilFire -= Time.deltaTime;
     }
     private void FireBullet(Vector3 inputDirection)

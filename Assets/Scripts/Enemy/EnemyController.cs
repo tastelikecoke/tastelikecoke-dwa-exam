@@ -32,14 +32,17 @@ public class EnemyController : MonoBehaviour
         {
             characterController.enabled = true;
         }
-        Vector3 playerDisplacement = transform.position - targetPlayer.transform.position;
-        if(playerDisplacement.magnitude < approachRadius)
+        if(targetPlayer != null)
         {
-            characterController?.SimpleMove(playerDisplacement.normalized * moveSpeed);
-        }
-        else if(playerDisplacement.magnitude > approachRadius)
-        {
-            characterController?.SimpleMove(-playerDisplacement.normalized * moveSpeed);
+            Vector3 playerDisplacement = transform.position - targetPlayer.transform.position;
+            if(playerDisplacement.magnitude < approachRadius)
+            {
+                characterController?.SimpleMove(playerDisplacement.normalized * moveSpeed);
+            }
+            else if(playerDisplacement.magnitude > approachRadius)
+            {
+                characterController?.SimpleMove(-playerDisplacement.normalized * moveSpeed);
+            }
         }
     }
 }
