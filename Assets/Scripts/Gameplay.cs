@@ -10,6 +10,7 @@ public class Gameplay : MonoBehaviour
     public float playerRespawnTime = 3f;
     public GameObject playerSpawnPoint = null;
     public EnemySpawner spawner = null;
+    public ProjectilePool defaultEnemyProjectilePool = null;
     public int currentKills = 0;
 
     private float timeUntilPlayerRespawn = 0f;
@@ -91,5 +92,6 @@ public class Gameplay : MonoBehaviour
             enemiesHealth[i].onDeath -= EnemyDied;
             enemiesHealth.Remove(enemiesHealth[i]);
         }
+        defaultEnemyProjectilePool.ClearAll();
     }
 }

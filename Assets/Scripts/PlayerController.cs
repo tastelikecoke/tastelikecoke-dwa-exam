@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float fireCooldown = 0.1f;
     public float bulletSpeed = 10f;
     public float controllerDeadZone = 0.3f;
+    public float attackPermittedMaximumHeight = 0.6f;
 
     [Header("Required References")]
     public ProjectilePool projectilePool = null;
@@ -61,15 +62,18 @@ public class PlayerController : MonoBehaviour
         }
         playerMesh.transform.rotation = Quaternion.LookRotation(inputDirection, Vector3.up);
 
-        if(Input.GetButton("Fire1"))
+        if(attackPermittedMaximumHeight >= transform.position.y)
         {
-            isMouse = true;
-            FireBullet(inputDirection);
-        }
-        if(Input.GetButton("Fire1 Controller"))
-        {
-            isMouse = false;
-            FireBullet(inputDirection);
+            if(Input.GetButton("Fire1"))
+            {
+                isMouse = true;
+                FireBullet(inputDirection);
+            }
+            if(Input.GetButton("Fire1 Controller"))
+            {
+                isMouse = false;
+                FireBullet(inputDirection);
+            }
         }
         if(timeUntilFire > 0.0f) timeUntilFire -= Time.deltaTime;
 

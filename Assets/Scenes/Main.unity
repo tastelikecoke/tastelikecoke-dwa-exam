@@ -172,6 +172,7 @@ MonoBehaviour:
   playerRespawnTime: 3
   playerSpawnPoint: {fileID: 2109022136}
   spawner: {fileID: 1659041829}
+  defaultEnemyProjectilePool: {fileID: 128917209}
   currentKills: 0
 --- !u!1 &43001174
 GameObject:

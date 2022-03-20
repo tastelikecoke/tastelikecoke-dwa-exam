@@ -36,4 +36,12 @@ public class ProjectilePool : MonoBehaviour
         projectile.Reset(position, rotation, Vector3.zero, projectileLifetime);
         return projectile;
     }
+
+    public void ClearAll()
+    {
+        for(int i = 0; i < pool.Count; i++)
+        {
+            pool[i].gameObject.SetActive(false);
+        }
+    }
 }
