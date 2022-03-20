@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [Header("Enemy Ranged Settings")]
     public float fireCooldown = 0.1f;
     public float bulletSpeed = 10f;
+    public float attackPermittedMaximumHeight = 0.6f;
 
     [Header("Required References")]
     public PlayerController targetPlayer = null;
@@ -23,6 +25,10 @@ public class EnemyAttack : MonoBehaviour
     private void Update()
     {
         if(health.IsDead())
+        {
+            return;
+        }
+        if(attackPermittedMaximumHeight < transform.position.y)
         {
             return;
         }

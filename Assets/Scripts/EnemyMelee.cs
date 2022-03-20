@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyMelee : MonoBehaviour
 {
+    [Header("Enemy Melee Settings")]
     public float meleeCooldown = 0.4f;
     public float meleeDistance = 2f;
+    public float attackPermittedMaximumHeight = 0.6f;
 
     [Header("Required References")]
     public PlayerController targetPlayer = null;
@@ -15,6 +17,10 @@ public class EnemyMelee : MonoBehaviour
 
     private void Update()
     {
+        if(attackPermittedMaximumHeight < transform.position.y)
+        {
+            return;
+        }
         Vector3 playerDirection = targetPlayer.transform.position -  transform.position;
         
         if(playerDirection.magnitude <= meleeDistance && timeUntilMelee <= 0.0f)
