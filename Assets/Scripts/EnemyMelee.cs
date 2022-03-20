@@ -9,7 +9,6 @@ public class EnemyMelee : MonoBehaviour
 
     [Header("Required References")]
     public PlayerController targetPlayer = null;
-    public ProjectilePool projectilePool = null;
     public Animator meleeAnimator = null;
 
     private float timeUntilMelee = 0.0f;

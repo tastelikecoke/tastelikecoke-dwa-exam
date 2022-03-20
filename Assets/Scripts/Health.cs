@@ -48,8 +48,10 @@ public class Health : MonoBehaviour
             timeUntilDamage = damageCooldown;
             if(IsDead() && deathAnimator != null)
             {
-                onDeath.Invoke(this);
+                if(onDeath != null)
+                    onDeath.Invoke(this);
                 deathAnimator.SetTrigger("Activate");
+                this.enabled = false;
             }
             else if(damageAnimator != null)
             {

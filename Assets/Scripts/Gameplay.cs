@@ -9,6 +9,7 @@ public class Gameplay : MonoBehaviour
     public MainDisplay mainDisplay;
     public float playerRespawnTime = 3f;
     public GameObject playerSpawnPoint = null;
+    public EnemySpawner spawner = null;
     public int currentKills = 0;
 
     private float timeUntilPlayerRespawn = 0f;
@@ -24,6 +25,15 @@ public class Gameplay : MonoBehaviour
         }
         highscoreKills = PlayerPrefs.GetInt("highscoreKills", 0);
         mainDisplay?.UpdateKills(currentKills, highscoreKills);
+
+        spawner.onSpawn += OnSpawn;
+    }
+
+    private void OnSpawn(Health newEnemy)
+    {
+        Debug.Log("enemy added");
+        enemiesHealth.Add(newEnemy);
+        newEnemy.onDeath += EnemyDied;
     }
 
     private void AddKills()
@@ -41,6 +51,7 @@ public class Gameplay : MonoBehaviour
     {
         AddKills();
         /* enemyHealth.gameObject.SetActive(false); */
+        enemyHealth.onDeath -= EnemyDied;
         enemiesHealth.Remove(enemyHealth);
     }
 
