@@ -63,6 +63,10 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnWave()
     {
+        StartCoroutine(SpawnWaveCR());
+    }
+    public IEnumerator SpawnWaveCR()
+    {
         for(int i = 0; i < minimumEnemyAmount + waveNumber; i++)
         {
             int enemyIdx = Random.Range(0, enemyPrefabTypes.Count);
@@ -115,6 +119,7 @@ public class EnemySpawner : MonoBehaviour
                 characterController.enabled = false;
             }
             newEnemyHealth.transform.position = spawnPosition;
+            yield return null;
         }
         waveNumber += 1;
     }
