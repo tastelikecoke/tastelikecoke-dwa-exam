@@ -7,6 +7,10 @@
 ## Third Party Plugins
 - no third party plugins.  All assets are in Unity or generated using Unity or MSPaint.
 
+## Controls
+- Mouse and Keyboard (WASD, Mouse curose, Left Mouse Button) implemented
+- Controller/gamepad (Left stick, Right stick, Right shoulder button, Right trigger) implemented
+
 ## How To Create a New Enemy
 - Start by creating a new prefab in `Assets/Prefabs/Enemy Prefabs`.
 

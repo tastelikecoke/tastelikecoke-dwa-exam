@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                 isMouse = true;
                 FireBullet(inputDirection);
             }
-            if(Input.GetButton("Fire1 Controller"))
+            if(Input.GetButton("Fire1 Controller") || Input.GetAxis("Fire2 Controller") > 0.5)
             {
                 isMouse = false;
                 FireBullet(inputDirection);
