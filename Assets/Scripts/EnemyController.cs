@@ -11,8 +11,10 @@ public class EnemyController : MonoBehaviour
     [Header("Required References")]
     public PlayerController targetPlayer = null;
 
+    /* runtime variables */
     private CharacterController characterController = null;
     private Health health = null;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();

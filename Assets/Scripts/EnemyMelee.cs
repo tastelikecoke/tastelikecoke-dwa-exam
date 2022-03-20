@@ -13,6 +13,7 @@ public class EnemyMelee : MonoBehaviour
     public PlayerController targetPlayer = null;
     public Animator meleeAnimator = null;
 
+    /* runtime variables */
     private float timeUntilMelee = 0.0f;
     private Health health = null;
 

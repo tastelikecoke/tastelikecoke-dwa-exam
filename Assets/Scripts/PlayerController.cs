@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera = null;
     public GameObject playerMesh = null;
 
+    /* runtime variables */
     private CharacterController characterController = null;
     private Health health = null;
     private float timeUntilFire = 0.0f;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectilePool : MonoBehaviour
 {
+    [Header("Required References")]
     public GameObject prefab = null;
     public float projectileLifetime = 5f;
 

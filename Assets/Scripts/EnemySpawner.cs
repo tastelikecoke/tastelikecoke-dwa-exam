@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Spawner Settings")]
     public List<Health> enemyPrefabTypes;
     public float waveCooldown = 1f;
     public int minimumEnemyAmount = 3;
     public float mapEdge = 19f;
     public float mapCeiling = 10f;
+
+    [Header("Required References")]
     public PlayerController defaultPlayerController = null;
     public ProjectilePool defaultEnemyProjectilePool = null;
 
-    private List<Health> pool;
-    public float timeUntilWave = 0f;
-    private int waveNumber = 0;
-
     public delegate void OnSpawn(Health newEnemy);
     public OnSpawn onSpawn;
+
+    /* runtime variables */
+    private List<Health> pool;
+    private float timeUntilWave = 0f;
+    private int waveNumber = 0;
+
 
     public Vector3 RandomlyGenerateSpawnPoint()
     {

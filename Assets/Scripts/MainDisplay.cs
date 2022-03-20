@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MainDisplay : MonoBehaviour
 {
+    [Header("Required References")]
     public Text respawnText;
     public GameObject respawnPanel;
     public Text killsText;

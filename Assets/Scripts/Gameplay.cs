@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class Gameplay : MonoBehaviour
 {
-    public Health playerHealth;
-    public List<Health> enemiesHealth;
-    public MainDisplay mainDisplay;
+    [Header("Gameplay Settings")]
     public float playerRespawnTime = 3f;
+
+    [Header("Required References")]
+    public Health playerHealth;
+    public MainDisplay mainDisplay;
     public GameObject playerSpawnPoint = null;
     public EnemySpawner spawner = null;
     public ProjectilePool defaultEnemyProjectilePool = null;
-    public int currentKills = 0;
 
+    /* runtime variables */
+    private int currentKills = 0;
+    private List<Health> enemiesHealth;
     private float timeUntilPlayerRespawn = 0f;
     private int highscoreKills = 0;
 
     private void Awake()
     {
         timeUntilPlayerRespawn = playerRespawnTime;
+        enemiesHealth = new List<Health>();
         
         for(int i = 0; i < enemiesHealth.Count; i++)
         {
@@ -58,7 +63,7 @@ public class Gameplay : MonoBehaviour
 
     private void Update()
     {
-        mainDisplay?.UpdateHealth(playerHealth.health / playerHealth.maxHealth);
+        mainDisplay?.UpdateHealth(playerHealth.HealthRatio);
         if(playerHealth.IsDead())
         {
             if(timeUntilPlayerRespawn > 0f)

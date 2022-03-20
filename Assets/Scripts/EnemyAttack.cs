@@ -14,6 +14,7 @@ public class EnemyAttack : MonoBehaviour
     public ProjectilePool projectilePool = null;
     public GameObject mesh = null;
 
+    /* runtime variables */
     private float timeUntilFire = 0.0f;
     private Health health = null;
 

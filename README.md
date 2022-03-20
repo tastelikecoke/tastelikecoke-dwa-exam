@@ -2,4 +2,5 @@
 For Exam
 
 Missing Features TODO
-- no config file
+- add enemy config
+- add exit button

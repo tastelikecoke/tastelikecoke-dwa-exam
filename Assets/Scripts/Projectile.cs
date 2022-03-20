@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [Header("Projectile Settings")]
     public Vector3 direction = Vector3.zero;
     public ProjectilePool projectilePool = null;
     public string attackFlag = "";

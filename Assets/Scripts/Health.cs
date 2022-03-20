@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [Header("Properties")]
+    [Header("Settings")]
     public float maxHealth = 1f;
     public float damageCooldown = 0.5f;
     public string attackFlag = "";
+
+    [Header("Required References")]
     public Animator damageAnimator = null;
     public Animator deathAnimator = null;
 
-    [Header("Live Properties")]
-    public float health;
-    private float timeUntilDamage = 0.0f;
-
     public delegate void OnDeath(Health self);
     public OnDeath onDeath;
+
+    /* runtime variables */
+    private float health;
+    private float timeUntilDamage = 0.0f;
+
+    public float HealthRatio
+    {
+        get { return health / maxHealth; }
+    }
 
     public bool IsDead()
     {
