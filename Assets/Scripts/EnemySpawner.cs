@@ -76,7 +76,6 @@ public class EnemySpawner : MonoBehaviour
         {
             int enemyIdx = Random.Range(0, enemyPrefabTypes.Count);
             Vector3 spawnPosition = RandomlyGenerateSpawnPoint();
-            Debug.Log(spawnPosition);
 
             Health newEnemyHealth = null;
             for(int poolIdx = 0; poolIdx < pool.Count; poolIdx++)

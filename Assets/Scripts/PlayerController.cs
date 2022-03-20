@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+        if(Input.GetButton("Exit"))
+        {
+            Application.Quit();
+        }
         if(health.IsDead())
         {
             characterController.enabled = false;
@@ -79,6 +84,7 @@ public class PlayerController : MonoBehaviour
         if(timeUntilFire > 0.0f) timeUntilFire -= Time.deltaTime;
 
         lastInputDirection = inputDirection;
+        
     }
 
     private void FireBullet(Vector3 inputDirection)
